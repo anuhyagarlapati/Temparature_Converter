@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="b1">
+        <h1>TEMPERATURE CONVERTER</h1>
+        <input type="text" id="un" placeholder="Enter a value"/><br/><br/>
+        <label class="toggle">
+            <input type="checkbox" id="cn">
+            <span class="labels" data-on="C->F" data-off="F->C"></span>
+        </label><br/><br/>
+        <button type="submit" id="convert">Convert</button>
+        <p id="result"></p>   
+    </div>
+    <script src="script.js"></script>
+</body>
+<script>
+    const button = document.getElementById("convert");
+    const valueInput = document.getElementById("un");
+    const toggle = document.getElementById("cn");
+    const result = document.getElementById("result");
+
+    button.addEventListener("click", function () {
+        const value = parseFloat(valueInput.value);
+        if (isNaN(value)) {
+            alert("Please enter a valid temperature");
+            return; 
+        }
+        if (toggle.checked) {
+            const fahrenheit = (value * 9 / 5) + 32;
+            result.textContent = `${fahrenheit.toFixed(2)}°F`;
+        } else {
+            const celsius = (value - 32) * 5 / 9;
+            result.textContent = `${celsius.toFixed(2)}°C`;
+        }
+    });
+
+</script>
+</html>
+
